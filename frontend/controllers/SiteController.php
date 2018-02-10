@@ -98,6 +98,33 @@ class SiteController extends Controller
         }
     }
 
+    public function actionSitemap()
+    {
+
+        Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+        Yii::$app->response->headers->add('Content-Type', 'application/xml');
+
+        $items  = [];
+
+       // $items = \worstinme\zoo\models\Items::find()->where(['state'=>1])->all();
+
+        $urls = [
+            [
+                'loc' => ['/site/about'],
+                'changefreq' => 'weekly',
+                'priority' => 0.6,
+            ],
+        ];
+
+        $data = $this->renderPartial('sitemap', [
+            'items' => $items,
+            'urls' => $urls,
+        ]);
+
+        return $data;
+
+    }
+
     /**
      * Logs out the current user.
      *
