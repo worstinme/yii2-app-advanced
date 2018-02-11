@@ -9,7 +9,7 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-    public $sourcePath = '@frontend/assets/source';
+    public $sourcePath = '@backend/assets/source';
 
     public $css = [
         'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/css/uikit.min.css',
@@ -24,4 +24,5 @@ class AppAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
     ];
+
 }
