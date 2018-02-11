@@ -1,16 +1,14 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
 use backend\assets\AppAsset;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use common\widgets\Alert;
 
 AppAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -23,56 +21,47 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
+<body class="admin">
 <?php $this->beginBody() ?>
-
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
-
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+<div class="adminnav uk-light uk-navbar-container">
+    <div class="uk-container uk-container-expand">
+        <nav class="uk-navbar" uk-navbar>
+            <a href="/" class="uk-navbar-item uk-logo"><i uk-icon="icon: nut"></i></a>
+            <div class="uk-navbar-left">
+                <?= \yii\widgets\Menu::widget([
+                    'options' => ['class' => 'uk-navbar-nav uk-hidden-small'],
+                    'activeCssClass' => 'uk-active',
+                    'submenuTemplate' => "\n<div class=\"uk-navbar-dropdown\">\n<ul class=\"uk-nav uk-navbar-dropdown-nav\">\n{items}\n</ul>\n</div>\n",
+                    'items' => [
+                        ['label'=>'Content','url'=>['/zoo/applications/index']],
+                        ['label'=>'Widgets','url'=>['/widgets/default/index']],
+                    ],
+                ]); ?>
+            </div>
+            <div class="uk-navbar-right">
+                <?= \yii\widgets\Menu::widget([
+                    'options' => ['class' => 'uk-navbar-nav uk-hidden-small'],
+                    'items' => [
+                        [
+                            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                            'url' => ['/site/logout'],
+                            'template' => '<a href="{url}" data-method="post">{label}</a>',
+                        ]
+                    ],
+                ]); ?>
+            </div>
+        </nav>
     </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+<?php if (Yii::$app->controller->module->id == 'zoo') : ?>
+    <?= $content ?>
+<?php else: ?>
+    <div class="uk-container uk-container-expand">
+        <?= $content ?>
     </div>
-</footer>
+<?php endif; ?>
+
 
 <?php $this->endBody() ?>
 </body>
