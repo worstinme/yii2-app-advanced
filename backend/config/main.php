@@ -44,6 +44,10 @@ return [
             'rules' => [
             ],
         ],
+        'assetManager'=>[
+            'forceCopy' => true,
+            'appendTimestamp' => true,
+        ],
     ],
     'params' => $params,
 ];
