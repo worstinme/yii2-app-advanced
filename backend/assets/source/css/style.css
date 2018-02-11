@@ -1,0 +1,8 @@
+
+.adminnav .uk-navbar-item, .adminnav .uk-navbar-nav>li>a,.adminnav  .uk-navbar-toggle {
+    height: 35px;
+}
+
+.adminnav.uk-navbar-container:not(.uk-navbar-transparent) {
+    background:#000;
+}
