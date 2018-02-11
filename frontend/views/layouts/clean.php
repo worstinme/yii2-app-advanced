@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
 use yii\helpers\Html;
@@ -23,19 +24,22 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
+<body class="clean uk-clearfix">
 <?php $this->beginBody() ?>
-
-<?=$this->render('blocks/header')?>
-
-<div class="uk-container">
-    <?=$content?>
+<div class="uk-flex uk-flex-center uk-text-center">
+    <div>
+        <header id="header" class="uk-margin-top uk-text-center">
+            <div class="logo uk-display-inline-block">
+                <a href="/">
+                    <div>Заказные электронные письма</div>
+                </a>
+            </div>
+        </header>
+        <section class="main">
+            <?= $content ?>
+        </section>
+    </div>
 </div>
-
-<?=$this->render('blocks/footer')?>
-
-<?=Alert::widget()?>
-
 <?php $this->endBody() ?>
 </body>
 </html>
