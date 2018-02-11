@@ -44,6 +44,12 @@ return [
             'rules' => [
             ],
         ],
+        'zoo'=>[
+            'class'=>'\worstinme\zoo\Component',
+            'backend'=>true,
+            'adminAccessRoles'=>['@'],
+            'backendLayout' => '@backend/views/layouts/main.php'
+        ],
         'assetManager'=>[
             'forceCopy' => true,
             'appendTimestamp' => true,
