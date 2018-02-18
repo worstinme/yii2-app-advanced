@@ -44,13 +44,25 @@ return [
             'rules' => [
             ],
         ],
-        'zoo'=>[
-            'class'=>'\worstinme\zoo\Component',
-            'backend'=>true,
-            'adminAccessRoles'=>['@'],
-            'backendLayout' => '@backend/views/layouts/main.php'
+        'zoo' => [
+            'class' => '\worstinme\zoo\Component',
+            'backend' => true,
+            'adminAccessRoles' => ['@'],
         ],
-        'assetManager'=>[
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@worstinme/zoo/backend/views/layouts' => '@backend/views/layouts',
+                    '@worstinme/widgets/views/layouts' => '@backend/views/layouts',
+                ],
+            ],
+        ],
+        'widgets' => [
+            'class' => '\worstinme\widgets\Component',
+            'backend' => true,
+            'accessRoles' => ['@'],
+        ],
+        'assetManager' => [
             'forceCopy' => true,
             'appendTimestamp' => true,
         ],

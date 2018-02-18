@@ -4,5 +4,34 @@
 }
 
 .adminnav.uk-navbar-container:not(.uk-navbar-transparent) {
-    background:#000;
+    background: linear-gradient(to left, #28a5f5, #1e87f0);
+}
+
+.admin .mainnav.uk-navbar-container {
+    background: linear-gradient(to left, #28a5f5, #1e87f0);
+}
+.admin .mainnav .uk-navbar-nav>li>a {
+    height: 60px;
+    position: relative;
+    color:rgba(255,255,255,0.8);
+}
+.admin .mainnav .uk-navbar-nav>li.active>a {
+    color:#fff;
+}
+.admin .mainnav .uk-navbar-nav>li>a::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 15px;
+    right: calc(102% - 15px);
+    bottom: 15px;
+    height: 1px;
+    background-color: currentColor;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+    -webkit-transition-property: right;
+    transition-property: right;
+}
+.admin .mainnav .uk-navbar-nav>li>a:hover::before,.mainnav .uk-navbar-nav>li.active>a::before {
+    right:15px;
 }

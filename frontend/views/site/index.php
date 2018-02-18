@@ -26,3 +26,9 @@ $this->title = 'My Yii Application';
         fugiat nulla pariatur.</p>
 
 </div>
+
+[blabla id=1]
+
+[widget id=1]
+
+[position name="left"]

@@ -6,6 +6,7 @@
 
 use backend\assets\AppAsset;
 use yii\helpers\Html;
+use yii\widgets\Menu;
 
 AppAsset::register($this);
 
@@ -23,23 +24,25 @@ AppAsset::register($this);
 </head>
 <body class="admin">
 <?php $this->beginBody() ?>
-<div class="adminnav uk-light uk-navbar-container">
+<div class="mainnav uk-navbar-container">
     <div class="uk-container uk-container-expand">
         <nav class="uk-navbar" uk-navbar>
-            <a href="/" class="uk-navbar-item uk-logo"><i uk-icon="icon: nut"></i></a>
             <div class="uk-navbar-left">
-                <?= \yii\widgets\Menu::widget([
+                <?= Menu::widget([
                     'options' => ['class' => 'uk-navbar-nav uk-hidden-small'],
+                    'encodeLabels' => false,
                     'activeCssClass' => 'uk-active',
                     'submenuTemplate' => "\n<div class=\"uk-navbar-dropdown\">\n<ul class=\"uk-nav uk-navbar-dropdown-nav\">\n{items}\n</ul>\n</div>\n",
-                    'items' => [
-                        ['label'=>'Content','url'=>['/zoo/applications/index']],
-                        ['label'=>'Widgets','url'=>['/widgets/default/index']],
-                    ],
+                    'items' =>
+                        array_merge([
+                            ['label' => '<i uk-icon="icon: nut"></i>', 'url' => ['/site/index']],
+                        ], Yii::$app->getModule('zoo')->nav, Yii::$app->getModule('widgets')->nav,[
+                            ['label' => 'Меню', 'url' => ['/menu/index']],
+                        ])
                 ]); ?>
             </div>
             <div class="uk-navbar-right">
-                <?= \yii\widgets\Menu::widget([
+                <?= Menu::widget([
                     'options' => ['class' => 'uk-navbar-nav uk-hidden-small'],
                     'items' => [
                         [
@@ -53,7 +56,6 @@ AppAsset::register($this);
         </nav>
     </div>
 </div>
-
 <?php if (Yii::$app->controller->module->id == 'zoo') : ?>
     <?= $content ?>
 <?php else: ?>
