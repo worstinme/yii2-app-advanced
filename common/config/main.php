@@ -11,8 +11,9 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'zoo'=>[
-            'class'=>'\worstinme\zoo\Component',
+        'zoo' => [
+            'class' => 'worstinme\zoo\Component',
+            'languages'=>['ru'=>'Русский','en'=>'English'],
         ],
         'widgets'=>[
             'class'=>'\worstinme\widgets\Component',
