@@ -36,15 +36,19 @@ AppAsset::register($this);
                     'items' =>
                         array_merge([
                             ['label' => '<i uk-icon="icon: nut"></i>', 'url' => ['/site/index']],
-                        ], Yii::$app->getModule('zoo')->nav, Yii::$app->getModule('widgets')->nav,[
-                            ['label' => 'Меню', 'url' => ['/menu/index']],
+                        ], Yii::$app->getModule('zoo')->nav, Yii::$app->getModule('widgets')->nav, [
+                            ['label' => 'Навигация', 'url' => ['/menu/index']],
+                            ['label' => 'Заказы', 'url' => ['/cart/index']],
+                            ['label' => 'Резервирование', 'url' => ['/reserv/index']],
                         ])
                 ]); ?>
             </div>
             <div class="uk-navbar-right">
                 <?= Menu::widget([
                     'options' => ['class' => 'uk-navbar-nav uk-hidden-small'],
+                    'encodeLabels' => false,
                     'items' => [
+                        ['label' => '<i uk-icon="icon: world"></i>', 'url' => Yii::$app->params['frontendUrl'], 'template' => '<a href="{url}" target="_blank">{label}</a>'],
                         [
                             'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                             'url' => ['/site/logout'],

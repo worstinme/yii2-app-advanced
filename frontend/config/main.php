@@ -49,6 +49,9 @@ return [
                 ['pattern' => 'sitemap', 'route' => 'site/sitemap', 'suffix' => '.xml'],
             ],
         ],
+        'assetManager' => [
+            'appendTimestamp' => true,
+        ],
     ],
     'params' => $params,
 ];

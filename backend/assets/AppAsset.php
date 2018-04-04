@@ -25,4 +25,13 @@ class AppAsset extends AssetBundle
         'yii\web\YiiAsset',
     ];
 
+    public function init()
+    {
+        $this->publishOptions = [
+            'forceCopy'=>true,
+            'appendTimestamp' => true,
+        ];
+        parent::init();
+    }
+
 }

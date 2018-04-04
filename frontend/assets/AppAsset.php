@@ -22,4 +22,12 @@ class AppAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
     ];
+
+    public function init()
+    {
+        $this->publishOptions = [
+            'forceCopy'=>true,
+        ];
+        parent::init();
+    }
 }

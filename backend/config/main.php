@@ -12,6 +12,13 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
+    'controllerMap' => [
+        'cart'=>[
+            'class'=>'worstinme\cart\controllers\AdminController',
+            'access' => ['@'],
+            'layout'=>'/main',
+        ],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
