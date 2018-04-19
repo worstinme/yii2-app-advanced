@@ -18,5 +18,16 @@ return [
         'widgets'=>[
             'class'=>'\worstinme\widgets\Component',
         ],
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@common/messages',
+                    'fileMap' => [
+                        'app' => 'app.php',
+                    ],
+                ],
+            ],
+        ],
     ],
 ];
