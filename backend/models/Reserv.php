@@ -15,7 +15,7 @@ class Reserv extends \common\models\Reserv
             [['comment'], 'string'],
             [['state', 'created_at', 'updated_at'], 'integer'],
             [['created_at', 'updated_at'], 'required'],
-            [['email', 'name', 'phone'], 'string', 'max' => 255],
+            [['email', 'name', 'phone','booking_date'], 'string', 'max' => 255],
         ];
     }
 
