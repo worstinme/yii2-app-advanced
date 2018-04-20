@@ -9,7 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log','cart'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
@@ -44,8 +44,7 @@ return [
             'showScriptName' => false,
             'suffix' => '/',
             'rules' => [
-                ''=>'site/index',
-                '<action:(about|contact|login|logout|signup)>'=>'site/<action>',
+                'cart'=>'site/cart',
                 ['pattern' => 'sitemap', 'route' => 'site/sitemap', 'suffix' => '.xml'],
             ],
         ],
