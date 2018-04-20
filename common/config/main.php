@@ -29,5 +29,11 @@ return [
                 ],
             ],
         ],
+        'formatter' => [
+            'numberFormatterOptions' => [
+                NumberFormatter::MIN_FRACTION_DIGITS => 0,
+            ],
+            'currencyCode' => 'rub',
+        ],
     ],
 ];
