@@ -51,11 +51,6 @@ return [
             'rules' => [
             ],
         ],
-        'zoo' => [
-            'class' => '\worstinme\zoo\Component',
-            'backend' => true,
-            'adminAccessRoles' => ['@'],
-        ],
         'view' => [
             'theme' => [
                 'pathMap' => [
