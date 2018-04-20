@@ -13,7 +13,27 @@ return [
         ],
         'zoo' => [
             'class' => 'worstinme\zoo\Component',
-            'languages'=>['ru'=>'Русский','en'=>'English'],
+            'languages' => ['ru' => 'Русский'],
+            'urlRuleComponent' => [
+                'item_suffix' => '/',
+            ],
+            'applications' => [
+                [
+                    'id' => 'news',
+                    'title' => 'Новости',
+                ],
+                [
+                    'id' => 'menu',
+                    'title' => 'Меню',
+                ],
+                [
+                    'id' => 'pages',
+                    'title' => 'Страницы',
+                    'urlRuleComponent' => [
+                        'app_url' => '',
+                    ],
+                ],
+            ],
         ],
         'widgets'=>[
             'class'=>'\worstinme\widgets\Component',
