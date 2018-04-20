@@ -5,6 +5,7 @@ namespace backend\models;
 use Yii;
 use worstinme\zoo\models\Items;
 use worstinme\zoo\models\Categories;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 
 class Menu extends \yii\db\ActiveRecord
@@ -45,9 +46,9 @@ class Menu extends \yii\db\ActiveRecord
             [['url'], 'required', 'when' => function ($model) {
                 return in_array($model->type, [4, 5]);
             }],
-            [['category', 'item', 'parent_id', 'sort', 'type'], 'integer'],
+            [['category', 'item', 'parent_id', 'sort', 'type'], 'integer','skipOnEmpty'  => true],
             [['link', 'content'], 'string'],
-            [['name', 'menu', 'application'], 'string', 'max' => 255],
+            [['name', 'menu', 'application'], 'string','max' => 255,'skipOnEmpty'  => true],
             ['menu', 'match', 'pattern' => '#^[\w_-]+$#i'],
         ];
     }
@@ -160,13 +161,13 @@ class Menu extends \yii\db\ActiveRecord
             case 1:
                 return Yii::$app->zoo->getApplication($this->application)->getUrl($this->lang);
             case 2:
-                if (($item = Items::find()->where([Items::tablename() . '.id' => $this->item_id])->one()) !== null) {
-                    return $item->url;
+                if (($category = Categories::findOne($this->category)) !== null) {
+                    return $category->url;
                 }
                 break;
             case 3:
-                if (($category = Categories::findOne($this->category)) !== null) {
-                    return $category->url;
+                if (($item = Items::find()->where([Items::tablename() . '.id' => $this->item])->one()) !== null) {
+                    return $item->url;
                 }
                 break;
             case 4:
@@ -178,6 +179,22 @@ class Menu extends \yii\db\ActiveRecord
 
         }
         return '#';
+    }
+
+    public static function navItems($name, $parent_id = null)
+    {
+        return array_filter(ArrayHelper::toArray(self::find()->where(['menu' => $name, 'parent_id' => $parent_id])->orderBy('sort ASC')->all(), [
+            self::className() => [
+                'label' => function ($model) {
+                    return $model->name;
+                },
+                'url',
+                'items' => function ($model) use ($name) {
+                    return self::navItems($name, $model->id);
+                }
+            ]
+        ]));
+
     }
 
 }
