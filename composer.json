@@ -24,7 +24,8 @@
     "yiisoft/yii2-bootstrap": "~2.0.0",
     "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
     "worstinme/yii2-zoo": "dev-master",
-    "worstinme/yii2-widgets": "dev-master"
+    "worstinme/yii2-widgets": "dev-master",
+    "worstinme/yii2-cart": "dev-master"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "~2.0.0",
