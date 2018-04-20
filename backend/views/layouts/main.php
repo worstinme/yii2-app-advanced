@@ -48,7 +48,7 @@ AppAsset::register($this);
                     'options' => ['class' => 'uk-navbar-nav uk-hidden-small'],
                     'encodeLabels' => false,
                     'items' => [
-                        ['label' => '<i uk-icon="icon: world"></i>', 'url' => Yii::$app->params['frontendUrl'], 'template' => '<a href="{url}" target="_blank">{label}</a>'],
+                        ['label' => '<i uk-icon="icon: world"></i>', 'url' => Yii::$app->zoo->frontendHost, 'template' => '<a href="{url}" target="_blank">{label}</a>'],
                         [
                             'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                             'url' => ['/site/logout'],
