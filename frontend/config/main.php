@@ -44,7 +44,7 @@ return [
             'showScriptName' => false,
             'suffix' => '/',
             'rules' => [
-                'cart'=>'site/cart',
+                '<action:(cart|about|contact|login|logout|signup)>'=>'site/<action>',
                 ['pattern' => 'sitemap', 'route' => 'site/sitemap', 'suffix' => '.xml'],
             ],
         ],
