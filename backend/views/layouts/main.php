@@ -68,6 +68,28 @@ AppAsset::register($this);
     </div>
 <?php endif; ?>
 
+<footer id="footer" class="uk-margin-large-top uk-margin-large-bottom">
+    <div class="footer-top">
+        <div class="uk-container uk-container-expand">
+
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="uk-container uk-container-expand">
+            <div class="uk-grid" uk-grid>
+                <div class="uk-width-expand@m">
+                    <p>Yii2 Starter – 2018 © Все права защищены</p>
+                </div>
+                <div class="uk-width-auto@m">
+                    <p>
+                        <a href="" uk-totop uk-scroll>Наверх </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
 
 <?php $this->endBody() ?>
 </body>
