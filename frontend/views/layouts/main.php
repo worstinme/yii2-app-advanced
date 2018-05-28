@@ -26,15 +26,15 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<?=$this->render('blocks/header')?>
+<?= $this->render('blocks/header') ?>
 
 <div class="uk-container">
     <?=$content?>
 </div>
 
-<?=$this->render('blocks/footer')?>
+<?= $this->render('blocks/footer') ?>
 
-<?=Alert::widget()?>
+<?= Alert::widget() ?>
 
 <?php $this->endBody() ?>
 </body>
